@@ -1,8 +1,10 @@
 from __future__ import annotations
-import argparse
+
 import os
-import sys
+import argparse
 from typing import Generator
+
+from cstag_cli.append.appender import append
 
 
 def is_sam(path: str) -> bool | None:
@@ -37,14 +39,15 @@ def read_stdin(file_obj):
 
 
 def append_action(args):
-    if args.file:
-        if is_sam(args.file):
-            data = read_sam(args.file)
-        else:
-            data = read_bam(args.file)
-    else:
-        data = read_stdin(sys.stdin)
-    print(args)
+    append()
+    # if args.file:
+    #     if is_sam(args.file):
+    #         data = read_sam(args.file)
+    #     else:
+    #         data = read_bam(args.file)
+    # else:
+    #     data = read_stdin(sys.stdin)
+    # print(args)
 
 
 def main():
@@ -58,7 +61,7 @@ def main():
     args = parser.parse_args()
 
     if "func" in args:
-        args.append(args)
+        args.func(args)
     else:
         parser.print_help()
 
