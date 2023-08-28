@@ -1,15 +1,47 @@
-from cstag_cli.utils.io import read_sam_lines_as_generator, read_sam_lines_as_list
+import pytest
+from cstag_cli.utils.io import determine_format, read_sam, write_sam
+
+from io import BytesIO
+import pysam
 
 
-def test_read_sam_lines_as_generator(tmp_path):
-    test_file = tmp_path / "test_file.txt"
-    test_file.write_text("line1\nline2\nline3\n")
-    lines = list(read_sam_lines_as_generator(test_file))
-    assert lines == ["line1", "line2", "line3"]
+def test_determine_format():
+    sam_stream = BytesIO(b"@SQ\tSN:chr1\tLN:1000\n")
+    bam_stream = BytesIO(b"BAM\x01")
+    unknown_stream = BytesIO(b"XXXX")
+
+    assert determine_format(sam_stream) == ("SAM", "r")
+    assert determine_format(bam_stream) == ("BAM", "rb")
+    assert determine_format(unknown_stream) == ("Unknown", None)
 
 
-def test_read_sam_lines_as_list(tmp_path):
-    test_file = tmp_path / "test_file.txt"
-    test_file.write_text("line1\nline2\nline3\n")
-    lines = read_sam_lines_as_list(test_file)
-    assert lines == ["line1", "line2", "line3"]
+def test_read_sam_with_sam_file(tmp_path):
+    sam_content = b"@SQ\tSN:chr1\tLN:1000\n"
+    sam_file = tmp_path / "test.sam"
+    sam_file.write_bytes(sam_content)
+
+    # SAMファイルを読み込む
+    with read_sam(str(sam_file)) as bam_file:
+        header = bam_file.header
+        assert "SQ" in header
+
+
+def test_read_sam_with_unknown_format():
+    with pytest.raises(OSError):
+        with read_sam(None):
+            pass
+
+
+def test_write_sam(tmp_path, capsys):
+    sam_string = "@SQ\tSN:chr1\tLN:1000\n"
+    # 一時ファイルのパスを作成
+    temp_file_path = tmp_path / "temp.sam"
+    # SAMデータを一時ファイルに書き込む
+    with open(temp_file_path, "w") as f:
+        f.write(sam_string)
+
+    sam = pysam.AlignmentFile(str(temp_file_path), "r")
+    write_sam(sam)
+
+    captured = capsys.readouterr()
+    assert sam_string in captured.out
