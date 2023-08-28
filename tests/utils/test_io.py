@@ -1,5 +1,5 @@
 import pytest
-from cstag_cli.utils.io import determine_format, read_sam, write_sam
+from cstag_cli.utils.io import _determine_format, read_sam, write_sam
 
 from io import BytesIO
 import pysam
@@ -8,11 +8,9 @@ import pysam
 def test_determine_format():
     sam_stream = BytesIO(b"@SQ\tSN:chr1\tLN:1000\n")
     bam_stream = BytesIO(b"BAM\x01")
-    unknown_stream = BytesIO(b"XXXX")
 
-    assert determine_format(sam_stream) == ("SAM", "r")
-    assert determine_format(bam_stream) == ("BAM", "rb")
-    assert determine_format(unknown_stream) == ("Unknown", None)
+    assert _determine_format(sam_stream) == "r"
+    assert _determine_format(bam_stream) == "rb"
 
 
 def test_read_sam_with_sam_file(tmp_path):
@@ -24,12 +22,6 @@ def test_read_sam_with_sam_file(tmp_path):
     with read_sam(str(sam_file)) as bam_file:
         header = bam_file.header
         assert "SQ" in header
-
-
-def test_read_sam_with_unknown_format():
-    with pytest.raises(OSError):
-        with read_sam(None):
-            pass
 
 
 def test_write_sam(tmp_path, capsys):

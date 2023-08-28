@@ -1,5 +1,4 @@
-def append():
-    import pysam
-
-    print("pysam: " + pysam.__version__)
+def append(sam, is_long: bool = False):
     print("ran append.py")
+    print(sam.header)
+    print(is_long)

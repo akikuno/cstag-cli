@@ -1,45 +1,20 @@
 from __future__ import annotations
 
 import os
+import sys
 import argparse
 from typing import Generator
 
+from cstag_cli.utils.io import read_sam
 from cstag_cli.append.appender import append
 
 
-def is_sam(path: str) -> bool | None:
-    _, ext = os.path.splitext(path)
-    if ext == ".sam":
-        return True
-    elif ext == ".bam":
-        return False
+def run_append(args):
+    if args.file:
+        sam = read_sam(args.file)
     else:
-        raise ValueError(f"Invalid file extension: {ext}")
-
-
-def read_sam(path: str) -> Generator[list[str]]:
-    pass
-
-
-def read_bam(path: str) -> Generator[list[str]]:
-    pass
-
-
-def is_binary_data(data) -> bool:
-    # ASCIIの範囲外のバイトが含まれているかチェックする
-    return any(b > 0x7F for b in data)
-
-
-def read_stdin(file_obj):
-    for line in file_obj:
-        data = line.encode("utf-8")  # Convert the line to bytes
-        if is_binary_data(data):
-            raise ValueError(f"Binary data detected.")
-        yield data
-
-
-def append_action(args):
-    append()
+        sam = read_sam(sys.stdin)
+    append(sam, args.long)
     # if args.file:
     #     if is_sam(args.file):
     #         data = read_sam(args.file)
@@ -54,12 +29,13 @@ def main():
     parser = argparse.ArgumentParser(description="cstag command-line tool")
     subparsers = parser.add_subparsers(title="subcommands", description="valid subcommands", help="additional help")
 
+    # cstag append
     append_parser = subparsers.add_parser("append", help="Append data")
     append_parser.add_argument("-f", "--file", type=str, help="Input path of SAM/BAM file")
-    append_parser.set_defaults(func=append_action)
+    append_parser.add_argument("-l", "--long", help="Output long format of cs tag", action="store_true")
+    append_parser.set_defaults(func=run_append)
 
     args = parser.parse_args()
-
     if "func" in args:
         args.func(args)
     else:
