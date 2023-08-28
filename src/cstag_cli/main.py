@@ -6,6 +6,7 @@ import argparse
 from typing import Generator
 
 from cstag_cli.utils.io import read_sam
+from cstag_cli.utils.validator import validate_having_md_tag
 from cstag_cli.append.appender import append
 
 
@@ -14,6 +15,7 @@ def run_append(args):
         sam = read_sam(args.file)
     else:
         sam = read_sam(sys.stdin)
+    validate_having_md_tag(sam)
     append(sam, args.long)
     # if args.file:
     #     if is_sam(args.file):

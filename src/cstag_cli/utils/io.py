@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import sys
 import pysam
-from io import BytesIO
-import tempfile
 
 
 def _is_binary_data(data: bytes) -> bool:
