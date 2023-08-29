@@ -28,8 +28,8 @@ conda install -c bioconda cstag-cli
 cstag append [-f/--file] [-l/--long]
 ```
 
-- -f/--file: Specifies the path to a SAM/BAM file. If no file is provided, it reads from standard input. An MD tag is required in the SAM/BAM file.
-- -l/--long: Outputs CS tags in the long format
+- **-f/--file**: Specifies the path to a SAM/BAM file. If no file is provided, it reads from standard input. An MD tag is required in the SAM/BAM file.
+- **-l/--long**: Outputs CS tags in the long format
 
 #### Examples
 
