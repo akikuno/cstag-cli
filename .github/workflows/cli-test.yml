@@ -1,0 +1,15 @@
+name: cli-tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    name: Bash on ${{ matrix.os }}
+    steps:
+          - uses: actions/checkout@v3
+          - name: Run tests
+            run: sh tests/src/append/tests.sh
