@@ -22,7 +22,7 @@ conda install -c bioconda cstag-cli
 
 ## 💡Usage
 
-### `cstag append`
+### Append CS tags to a SAM/BAM file
 
 ```bash
 cstag append [-f/--file] [-l/--long]
