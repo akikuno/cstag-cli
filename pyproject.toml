@@ -10,7 +10,7 @@ authors = [{ name = "Akihiro Kuno", email = "akuno@md.tsukuba.ac.jp" }]
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }
 
-dependencies = ["pysam"]
+dependencies = ["pysam", "cstag"]
 
 classifiers = [
     "Programming Language :: Python :: 3",
