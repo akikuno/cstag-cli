@@ -10,6 +10,8 @@ authors = [{ name = "Akihiro Kuno", email = "akuno@md.tsukuba.ac.jp" }]
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }
 
+dependencies = ["pysam", "cstag"]
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -18,12 +20,12 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
 
-[project.scripts]
-cstag = "cstag_cli.main:execute"
-
 [project.urls]
 repository = "https://github.com/akikuno/cstag-cli"
 
+
+[project.scripts]
+cstag = "cstag_cli.main:main"
 
 [tool.setuptools]
 packages.find = { where = ["src"] }

@@ -1,0 +1,4 @@
+@SQ	SN:chr1	LN:1000
+@SQ	SN:chr2	LN:1000
+read1	0	chr1	500	25	18M2D6M1I11M	*	0	0	AAAAAAAAAAAAAAAAAAATTTTTAAAATTTTTAAA	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	MD:Z:18^AG17	cs:Z::18-ag:6+a:11
+read2	16	chr2	500	25	36M	*	0	0	ATATAACAAACCCTGAGAACCAAAATGAACGAAAAC	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	MD:Z:0C34T0	cs:Z:*ca:34*tc
