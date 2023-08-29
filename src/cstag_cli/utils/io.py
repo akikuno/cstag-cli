@@ -31,16 +31,3 @@ def read_sam(data: str | sys.stdin) -> pysam.AlignmentFile:
         mode = "r"
         input_stream = sys.stdin
     return pysam.AlignmentFile(input_stream, mode)
-
-
-def write_sam(sam: pysam.AlignmentFile) -> None:
-    # output header
-    for record, fields in sam.header.to_dict().items():
-        for field in fields:
-            line = [f"@{record}"]
-            for tag, value in field.items():
-                line.append(f"{tag}:{value}")
-            sys.stdout.write("\t".join(line) + "\n")
-    # output body
-    for read in sam:
-        sys.stdout.write(read.to_string() + "\n")
