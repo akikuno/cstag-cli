@@ -1,3 +1,9 @@
+[![Licence](https://img.shields.io/badge/License-MIT-9cf.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
+[![Test](https://img.shields.io/github/actions/workflow/status/akikuno/cstag-cli/pytest.yml?branch=main&label=Test&color=brightgreen&style=flat-square)](https://github.com/akikuno/cstag/actions)
+<!-- [![Python](https://img.shields.io/pypi/pyversions/cstag.svg?label=Python&color=blue&style=flat-square)](https://pypi.org/project/cstag/)
+[![PyPI](https://img.shields.io/pypi/v/cstag.svg?label=PyPI&color=orange&style=flat-square)](https://pypi.org/project/cstag/)
+[![Bioconda](https://img.shields.io/conda/v/bioconda/cstag?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag)
+ -->
 # cstag-cli
 
 `cstag-cli` is a command-line tool of [`cstag`](https://github.com/akikuno/cstag) for manipulating [minimap2's CS tags](https://github.com/lh3/minimap2#the-cs-optional-tag).
@@ -33,7 +39,7 @@ cstag append [-f/--file] [-l/--long]
 
 #### Examples
 
-- To append CS tags in theshort format:
+- To append CS tags in the short format:
 ```bash
 cstag append -f tests/append/data/example.bam > example_cs_short.sam
 ```
