@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip pytest pysam
+          python -m pip install --upgrade pip pytest pysam cstag
 
       - name: Run pytest
         env:
