@@ -10,7 +10,7 @@ cat tests/append/data/example.sam |
 
 # Long format
 cat tests/append/data/example.sam |
-    cstag append -l >tests/append/data/example_cs_long.sam
+    cstag append -l >/tmp/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
     exit 1
@@ -28,7 +28,7 @@ fi
 cstag append -f tests/append/data/example.sam >/tmp/example_cs_short.sam
 
 # Long format
-cstag append -f tests/append/data/example.sam -l >tests/append/data/example_cs_long.sam
+cstag append -f tests/append/data/example.sam -l >/tmp/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
     exit 1
@@ -48,7 +48,7 @@ cstag append -f tests/append/data/example.bam |
 
 # Long format
 cstag append -f tests/append/data/example.bam -l |
-    grep -v "@HD" >tests/append/data/example_cs_long.sam
+    grep -v "@HD" >/tmp/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
     exit 1
