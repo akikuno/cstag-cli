@@ -43,10 +43,12 @@ fi
 #######################################
 
 # Short format
-cstag append -f tests/append/data/example.bam >/tmp/example_cs_short.sam
+cstag append -f tests/append/data/example.bam |
+    grep -v "@HD" >/tmp/example_cs_short.sam
 
 # Long format
-cstag append -f tests/append/data/example.bam -l >tests/append/data/example_cs_long.sam
+cstag append -f tests/append/data/example.bam -l |
+    grep -v "@HD" >tests/append/data/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
     exit 1

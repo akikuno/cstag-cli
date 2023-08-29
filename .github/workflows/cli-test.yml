@@ -12,4 +12,4 @@ jobs:
     steps:
           - uses: actions/checkout@v3
           - name: Run tests
-            run: sh tests/src/append/tests.sh
+            run: sh tests/append/tests.sh
