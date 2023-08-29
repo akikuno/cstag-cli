@@ -1,8 +1,8 @@
 [![Licence](https://img.shields.io/badge/License-MIT-9cf.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
 [![Test](https://img.shields.io/github/actions/workflow/status/akikuno/cstag-cli/pytest.yml?branch=main&label=Test&color=brightgreen&style=flat-square)](https://github.com/akikuno/cstag/actions)
-<!-- [![Python](https://img.shields.io/pypi/pyversions/cstag.svg?label=Python&color=blue&style=flat-square)](https://pypi.org/project/cstag/)
-[![PyPI](https://img.shields.io/pypi/v/cstag.svg?label=PyPI&color=orange&style=flat-square)](https://pypi.org/project/cstag/)
-[![Bioconda](https://img.shields.io/conda/v/bioconda/cstag?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag)
+[![Python](https://img.shields.io/pypi/pyversions/cstag-cli.svg?label=Python&color=blue&style=flat-square)](https://pypi.org/project/cstag-cli/)
+[![PyPI](https://img.shields.io/pypi/v/cstag-cli.svg?label=PyPI&color=orange&style=flat-square)](https://pypi.org/project/cstag-cli/)
+<!-- [![Bioconda](https://img.shields.io/conda/v/bioconda/cstag?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag)
  -->
 # cstag-cli
 
@@ -20,11 +20,11 @@ Using [PyPI](https://pypi.org/project/cstag-cli/):
 pip install cstag-cli
 ```
 
-Using [Bioconda](https://anaconda.org/bioconda/cstag-cli):
+<!-- Using [Bioconda](https://anaconda.org/bioconda/cstag-cli):
 
 ```bash
 conda install -c bioconda cstag-cli
-```
+``` -->
 
 ## 💡Usage
 
