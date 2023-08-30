@@ -21,6 +21,7 @@ classifiers = [
 ]
 
 [project.urls]
+homepage = "https://github.com/akikuno/cstag-cli"
 repository = "https://github.com/akikuno/cstag-cli"
 
 
