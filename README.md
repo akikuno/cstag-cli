@@ -2,8 +2,7 @@
 [![Test](https://img.shields.io/github/actions/workflow/status/akikuno/cstag-cli/pytest.yml?branch=main&label=Test&color=brightgreen&style=flat-square)](https://github.com/akikuno/cstag/actions)
 [![Python](https://img.shields.io/pypi/pyversions/cstag-cli.svg?label=Python&color=blue&style=flat-square)](https://pypi.org/project/cstag-cli/)
 [![PyPI](https://img.shields.io/pypi/v/cstag-cli.svg?label=PyPI&color=orange&style=flat-square)](https://pypi.org/project/cstag-cli/)
-<!-- [![Bioconda](https://img.shields.io/conda/v/bioconda/cstag?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag)
- -->
+[![Bioconda](https://img.shields.io/conda/v/bioconda/cstag-cli?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag-cli)
 [![DOI](https://zenodo.org/badge/683243028.svg)](https://zenodo.org/badge/latestdoi/683243028)
 
 
