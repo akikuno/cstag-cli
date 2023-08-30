@@ -22,11 +22,11 @@ Using [PyPI](https://pypi.org/project/cstag-cli/):
 pip install cstag-cli
 ```
 
-<!-- Using [Bioconda](https://anaconda.org/bioconda/cstag-cli):
+Using [Bioconda](https://anaconda.org/bioconda/cstag-cli):
 
 ```bash
 conda install -c bioconda cstag-cli
-``` -->
+```
 
 ## 💡Usage
 
