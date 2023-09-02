@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import pysam
 import argparse
 
 from cstag_cli.utils.io import read_sam
@@ -9,9 +10,9 @@ from cstag_cli.append.appender import append
 
 def run_append(args):
     if args.file:
-        sam = read_sam(args.file)
+        sam: pysam.AlignmentFile = read_sam(args.file)
     else:
-        sam = read_sam(sys.stdin)
+        sam: pysam.AlignmentFile = read_sam(sys.stdin)
     append(sam, args.long)
 
 
