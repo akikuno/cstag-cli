@@ -1,8 +1,8 @@
-[![Licence](https://img.shields.io/badge/License-MIT-9cf.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
-[![Test](https://img.shields.io/github/actions/workflow/status/akikuno/cstag-cli/pytest.yml?branch=main&label=Test&color=brightgreen&style=flat-square)](https://github.com/akikuno/cstag/actions)
-[![Python](https://img.shields.io/pypi/pyversions/cstag-cli.svg?label=Python&color=blue&style=flat-square)](https://pypi.org/project/cstag-cli/)
-[![PyPI](https://img.shields.io/pypi/v/cstag-cli.svg?label=PyPI&color=orange&style=flat-square)](https://pypi.org/project/cstag-cli/)
-[![Bioconda](https://img.shields.io/conda/v/bioconda/cstag-cli?label=Bioconda&color=orange&style=flat-square)](https://anaconda.org/bioconda/cstag-cli)
+[![Licence](https://img.shields.io/badge/License-MIT-9cf.svg)](https://choosealicense.com/licenses/mit/)
+[![Test](https://img.shields.io/github/actions/workflow/status/akikuno/cstag-cli/pytest.yml?branch=main&label=Test&color=brightgreen)](https://github.com/akikuno/cstag/actions)
+[![Python](https://img.shields.io/pypi/pyversions/cstag-cli.svg?label=Python&color=blue)](https://pypi.org/project/cstag-cli/)
+[![PyPI](https://img.shields.io/pypi/v/cstag-cli.svg?label=PyPI&color=orange)](https://pypi.org/project/cstag-cli/)
+[![Bioconda](https://img.shields.io/conda/v/bioconda/cstag-cli?label=Bioconda&color=orange)](https://anaconda.org/bioconda/cstag-cli)
 [![DOI](https://zenodo.org/badge/683243028.svg)](https://zenodo.org/badge/latestdoi/683243028)
 
 
@@ -57,5 +57,5 @@ cat tests/append/data/example.bam | cstag append > example_cs_short.sam
 
 ## 📣Feedback
 
-For questions, bug reports, or any other inquiries, feel free to reach out!
+For questions, bug reports, or any other inquiries, feel free to reach out!  
 Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for reporting.
