@@ -57,5 +57,10 @@ cat tests/append/data/example.bam | cstag append > example_cs_short.sam
 
 ## 📣Feedback
 
-For questions, bug reports, or any other inquiries, feel free to reach out!  
-Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for reporting.
+For questions, bug reports, or other forms of feedback, we'd love to hear from you!  
+Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for all reporting purposes.  
+
+## 🤝 Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/akikuno/cstag-cli/blob/main/CODE_OF_CONDUCT.md).  
+By participating in this project you agree to abide by its terms.  
