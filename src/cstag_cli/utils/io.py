@@ -13,6 +13,10 @@ def _is_binary_data(data: bytes) -> bool:
 def _determine_format(input_stream) -> str:
     first_bytes = input_stream.read(100)
 
+    # Check if the input stream is empty
+    if not first_bytes:
+        raise ValueError("The input is empty.")
+
     # Seek back to the original position after reading bytes from the buffer
     input_stream.seek(0)
 
