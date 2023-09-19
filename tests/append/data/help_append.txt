@@ -5,4 +5,4 @@ positional arguments:
 
 options:
   -h, --help  show this help message and exit
-  -l, --long  Output long format of cs tag
+  -l, --long  Output long format of CS tag
