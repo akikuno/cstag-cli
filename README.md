@@ -30,27 +30,29 @@ conda install -c bioconda cstag-cli
 
 ## 💡Usage
 
-### Append CS tags to a SAM/BAM file
+### Appending CS Tags to a SAM/BAM File
 
 ```bash
-cstag append [-f/--file] [-l/--long]
+cstag append <file> [-l/--long]
 ```
 
-- **-f/--file**: Specifies the path to a SAM/BAM file. If no file is provided, it reads from standard input. An MD tag is required in the SAM/BAM file.
-- **-l/--long**: Outputs CS tags in the long format
+- **\<file\>**:  Path to the SAM/BAM file. If omitted, the program reads from standard input.  
+> Note: The SAM/BAM file must contain an MD tag.
+- **-l/--long**: Generates CS tags in long format
 
 #### Examples
 
-- To append CS tags in the short format:
+- Appending CS tags in short format:
 ```bash
-cstag append -f tests/append/data/example.bam > example_cs_short.sam
+cstag append tests/append/data/example.bam > example_cs_short.sam
 ```
 
-- To append CS tags in the long format:
+- Appending CS tags in long format:
 ```bash
-cstag append -f tests/append/data/example.bam -l > example_cs_long.sam
+cstag append tests/append/data/example.bam --long > example_cs_long.sam
 ```
 - Reading data from standard input:
+
 ```bash
 cat tests/append/data/example.bam | cstag append > example_cs_short.sam
 ```
@@ -60,7 +62,6 @@ cat tests/append/data/example.bam | cstag append > example_cs_short.sam
 For questions, bug reports, or other forms of feedback, we'd love to hear from you!  
 Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for all reporting purposes.  
 
-## 🤝 Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/akikuno/cstag-cli/blob/main/CODE_OF_CONDUCT.md).  
 By participating in this project you agree to abide by its terms.  
