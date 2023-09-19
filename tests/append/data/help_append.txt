@@ -1,0 +1,8 @@
+usage: cstag append [-h] [-l] [file]
+
+positional arguments:
+  file        Input path of SAM/BAM file
+
+options:
+  -h, --help  show this help message and exit
+  -l, --long  Output long format of cs tag

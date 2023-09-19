@@ -1,0 +1,12 @@
+usage: cstag [-h] {append} ...
+
+cstag command-line tool
+
+options:
+  -h, --help  show this help message and exit
+
+subcommands:
+  valid subcommands
+
+  {append}    additional help
+    append    Append cs tag to SAM/BAM file

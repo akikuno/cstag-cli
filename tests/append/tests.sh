@@ -25,10 +25,10 @@ fi
 #######################################
 
 # Short format
-cstag append -f tests/append/data/example.sam >/tmp/example_cs_short.sam
+cstag append tests/append/data/example.sam >/tmp/example_cs_short.sam
 
 # Long format
-cstag append -f tests/append/data/example.sam -l >/tmp/example_cs_long.sam
+cstag append tests/append/data/example.sam -l >/tmp/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
     exit 1
@@ -43,11 +43,11 @@ fi
 #######################################
 
 # Short format
-cstag append -f tests/append/data/example.bam |
+cstag append tests/append/data/example.bam |
     grep -v "@HD" >/tmp/example_cs_short.sam
 
 # Long format
-cstag append -f tests/append/data/example.bam -l |
+cstag append tests/append/data/example.bam -l |
     grep -v "@HD" >/tmp/example_cs_long.sam
 
 if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
@@ -55,5 +55,21 @@ if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
 fi
 
 if ! diff /tmp/example_cs_long.sam tests/append/data/example_cs_long.sam; then
+    exit 1
+fi
+
+#######################################
+# No arguments
+#######################################
+
+cstag > /tmp/help.txt
+
+if ! diff /tmp/help.txt tests/append/data/help.txt; then
+    exit 1
+fi
+
+cstag append > /tmp/help_append.txt
+
+if ! diff /tmp/help_append.txt tests/append/data/help_append.txt; then
     exit 1
 fi
