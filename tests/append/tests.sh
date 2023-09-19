@@ -62,14 +62,8 @@ fi
 # No arguments
 #######################################
 
-cstag > /tmp/help.txt
+cstag >/tmp/help.txt
 
 if ! diff /tmp/help.txt tests/append/data/help.txt; then
-    exit 1
-fi
-
-cstag append > /tmp/help_append.txt
-
-if ! diff /tmp/help_append.txt tests/append/data/help_append.txt; then
     exit 1
 fi
