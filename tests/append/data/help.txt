@@ -2,7 +2,7 @@ usage: cstag [-h] [-v] {append} ...
 
 cstag command-line tool
 
-options:
+optional arguments:
   -h, --help     show this help message and exit
   -v, --version  show program's version number and exit
 

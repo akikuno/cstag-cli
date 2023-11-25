@@ -34,4 +34,7 @@ def read_sam(data: str | sys.stdin) -> pysam.AlignmentFile:
     else:
         mode = "r"
         input_stream = sys.stdin
-    return pysam.AlignmentFile(input_stream, mode)
+    save = pysam.set_verbosity(0)
+    alignment = pysam.AlignmentFile(input_stream, mode)
+    pysam.set_verbosity(save)
+    return alignment

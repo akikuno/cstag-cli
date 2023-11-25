@@ -3,6 +3,6 @@ usage: cstag append [-h] [-l] [file]
 positional arguments:
   file        Input path of SAM/BAM file
 
-options:
+optional arguments:
   -h, --help  show this help message and exit
   -l, --long  Output long format of a cs tag
