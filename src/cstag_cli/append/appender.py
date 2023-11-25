@@ -4,11 +4,11 @@ import cstag
 
 
 def append(sam: pysam.AlignmentFile, long: bool = False) -> None:
-    """Append CS tags to reads in a SAM/BAM file.
+    """Append cs tags to reads in a SAM/BAM file.
 
     Args:
         sam (pysam.AlignmentFile): SAM/BAM file object.
-        long (bool, optional): Whether to output CS tags in long format. Defaults to False.
+        long (bool, optional): Whether to output cs tags in long format. Defaults to False.
     """
 
     # Output the header
@@ -24,13 +24,13 @@ def append(sam: pysam.AlignmentFile, long: bool = False) -> None:
         if not read.has_tag("MD"):
             raise ValueError(f"MD tag is not found in the input. \nThis error occurred at {read.query_name}.")
 
-        # Append CS tag and output alignments
+        # Append cs tag and output alignments
         try:
             cs = cstag.call(cigar=read.cigarstring, md=read.get_tag("MD"), seq=read.seq, long=long)
         except Exception as e:
             raise type(e)(f"{e}. \nThis error occurred at {read.query_name}.")
 
-        # Set the CS tag for the read
+        # Set the cs tag for the read
         read.set_tag("cs", cs.replace("cs:Z:", ""), replace=True)
 
         # Output the modified read

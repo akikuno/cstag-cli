@@ -8,11 +8,11 @@
 
 # cstag-cli
 
-`cstag-cli` is a command-line tool of [`cstag`](https://github.com/akikuno/cstag) for manipulating [minimap2's CS tags](https://github.com/lh3/minimap2#the-cs-optional-tag).
+`cstag-cli` is a command-line tool of [`cstag`](https://github.com/akikuno/cstag) for manipulating [minimap2's cs tags](https://github.com/lh3/minimap2#the-cs-optional-tag).
 
 ## 🌟Features
 
-- `cstag append`: Appends CS tags to a SAM/BAM file
+- `cstag append`: Appends cs tags to a SAM/BAM file
 
 ## 🛠 Installation
 
@@ -30,7 +30,7 @@ conda install -c bioconda cstag-cli
 
 ## 💡Usage
 
-### Appending CS Tags to a SAM/BAM File
+### Appending cs tags to a SAM/BAM File
 
 ```bash
 cstag append <file> [-l/--long]
@@ -38,16 +38,16 @@ cstag append <file> [-l/--long]
 
 - **\<file\>**:  Path to the SAM/BAM file. If omitted, the program reads from standard input.  
 > Note: The SAM/BAM file must contain an MD tag.
-- **-l/--long**: Generates CS tags in long format
+- **-l/--long**: Generates cs tags in long format
 
 #### Examples
 
-- Appending CS tags in short format:
+- Appending cs tags in short format:
 ```bash
 cstag append tests/append/data/example.bam > example_cs_short.sam
 ```
 
-- Appending CS tags in long format:
+- Appending cs tags in long format:
 ```bash
 cstag append tests/append/data/example.bam --long > example_cs_long.sam
 ```

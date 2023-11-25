@@ -6,6 +6,8 @@ import argparse
 from cstag_cli.utils.io import read_sam
 from cstag_cli.append.appender import append
 
+CSTAG_CLI_VERSION = "1.0.0"
+
 
 def validate_stdin(data: sys.stdin, subparser) -> None:
     """Validate if data is available on standard input."""
@@ -29,15 +31,15 @@ def run_append(args, subparser) -> None:
 def main() -> None:
     """Main function for the command-line tool."""
     parser = argparse.ArgumentParser(description="cstag command-line tool")
-    parser.add_argument("-v", "--version", action="version", version="1.0.0")
+    parser.add_argument("-v", "--version", action="version", version=CSTAG_CLI_VERSION)
 
     subparsers = parser.add_subparsers(dest="command", description="valid subcommands", help="additional help")
     subparsers_dict = {}
 
     # Subparser for 'cstag append'
-    append_parser = subparsers.add_parser("append", help="Append CS tag to SAM/BAM file")
+    append_parser = subparsers.add_parser("append", help="Append a cs tag to SAM/BAM file")
     append_parser.add_argument("file", nargs="?", default="-", type=str, help="Input path of SAM/BAM file")
-    append_parser.add_argument("-l", "--long", help="Output long format of CS tag", action="store_true")
+    append_parser.add_argument("-l", "--long", help="Output long format of a cs tag", action="store_true")
     append_parser.set_defaults(func=run_append)
     subparsers_dict["append"] = append_parser
 
