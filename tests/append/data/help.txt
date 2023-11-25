@@ -10,4 +10,4 @@ subcommands:
   valid subcommands
 
   {append}       additional help
-    append       Append CS tag to SAM/BAM file
+    append       Append a cs tag to SAM/BAM file
