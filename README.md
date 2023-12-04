@@ -16,17 +16,27 @@
 
 ## 🛠 Installation
 
+### Prerequisites
+
+- Python 3.7 or later
+- Unix-like environment (Linux, macOS, WSL, etc.)
+
+### Installation
+
+Using [Bioconda](https://anaconda.org/bioconda/cstag-cli) (Recommended):
+
+```bash
+conda install -c bioconda cstag-cli
+```
+
 Using [PyPI](https://pypi.org/project/cstag-cli/):
 
 ```bash
 pip install cstag-cli
 ```
 
-Using [Bioconda](https://anaconda.org/bioconda/cstag-cli):
-
-```bash
-conda install -c bioconda cstag-cli
-```
+> [!CAUTION]
+> If you encounter any issues during the installation, please refer to the [Troubleshooting Guide](https://github.com/akikuno/cstag-cli/blob/main/docs/troubleshooting.md)
 
 ## 💡Usage
 
@@ -37,8 +47,12 @@ cstag append <file> [-l/--long]
 ```
 
 - **\<file\>**:  Path to the SAM/BAM file. If omitted, the program reads from standard input.  
-> Note: The SAM/BAM file must contain an MD tag.
+
+> [!NOTE]
+> The SAM/BAM file must contain an MD tag.
+
 - **-l/--long**: Generates cs tags in long format
+
 
 #### Examples
 
@@ -62,9 +76,9 @@ cat tests/append/data/example.bam | cstag append > example_cs_short.sam
 For questions, bug reports, or other forms of feedback, we'd love to hear from you!  
 Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for all reporting purposes.  
 
-Please refer to [CONTRIBUTING](https://github.com/akikuno/cstag-cli/blob/main/CONTRIBUTING.md) for how to contribute and how to verify your contributions.  
+Please refer to [CONTRIBUTING](https://github.com/akikuno/cstag-cli/blob/main/docs/CONTRIBUTING.md) for how to contribute and how to verify your contributions.  
 
 ## 🤝 Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/akikuno/cstag-cli/blob/main/CODE_OF_CONDUCT.md).  
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/akikuno/cstag-cli/blob/main/docs/CODE_OF_CONDUCT.md).  
 By participating in this project you agree to abide by its terms.  
