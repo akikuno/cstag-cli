@@ -48,8 +48,9 @@ cstag append <file> [-l/--long]
 
 - **\<file\>**:  Path to the SAM/BAM file. If omitted, the program reads from standard input.  
 
-> [!NOTE]
-> The SAM/BAM file must contain an MD tag.
+> [!IMPORTANT]
+> The SAM/BAM file must contain an MD tag.  
+> if the SAM/BAM files do not have MD tags, use [`samtools calmd`](https://www.htslib.org/doc/samtools-calmd.html).  
 
 - **-l/--long**: Generates cs tags in long format
 
