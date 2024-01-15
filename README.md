@@ -29,6 +29,15 @@ Using [Bioconda](https://anaconda.org/bioconda/cstag-cli) (Recommended):
 conda install -c bioconda cstag-cli
 ```
 
+> [!NOTE]
+> To Apple Silicon (ARM64) users:  
+> [Since the Bioconda channel does not yet support Apple Silicon](https://github.com/bioconda/bioconda-recipes/issues/37068#issuecomment-1257790919), please use the following command to install `cstag-cli` through Rosetta.
+> ```bash
+> CONDA_SUBDIR=osx-64 conda create -n env-cstag -c conda-forge -c bioconda python=3.10 cstag cstag-cli -y
+> conda activate env-cstag
+> conda config --env --set subdir osx-64
+> ```
+
 Using [PyPI](https://pypi.org/project/cstag-cli/):
 
 ```bash
