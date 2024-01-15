@@ -26,7 +26,8 @@
 Using [Bioconda](https://anaconda.org/bioconda/cstag-cli) (Recommended):
 
 ```bash
-conda install -c bioconda cstag-cli
+conda create -n env-cstag -c conda-forge -c bioconda python=3.10 cstag-cli -y
+conda activate env-cstag
 ```
 
 > [!NOTE]
