@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/cstag-cli.svg?label=Python&color=blue)](https://pypi.org/project/cstag-cli/)
 [![PyPI](https://img.shields.io/pypi/v/cstag-cli.svg?label=PyPI&color=orange)](https://pypi.org/project/cstag-cli/)
 [![Bioconda](https://img.shields.io/conda/v/bioconda/cstag-cli?label=Bioconda&color=orange)](https://anaconda.org/bioconda/cstag-cli)
+[![JOSS](https://joss.theoj.org/papers/10.21105/joss.06066/status.svg)](https://doi.org/10.21105/joss.06066)
 [![DOI](https://zenodo.org/badge/683243028.svg)](https://zenodo.org/badge/latestdoi/683243028)
 
 
@@ -93,3 +94,8 @@ Please refer to [CONTRIBUTING](https://github.com/akikuno/cstag-cli/blob/main/do
 
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/akikuno/cstag-cli/blob/main/docs/CODE_OF_CONDUCT.md).  
 By participating in this project you agree to abide by its terms.  
+
+## 📄 Citation
+
+- Kuno, A., (2024). cstag and cstag-cli: tools for manipulating and visualizing cs tags. *Journal of Open Source Software*, 9(93), 6066, https://doi.org/10.21105/joss.06066
+
