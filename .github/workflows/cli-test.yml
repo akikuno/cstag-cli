@@ -1,32 +1,38 @@
-name: cli-tests
+name: CLI tests
 
 on:
   push:
+  pull_request:
   schedule:
-    - cron: "0 2 * * 1" # The task runs at 2 a.m. every Monday.
+    - cron: "0 2 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cli-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  cli-test:
+    name: CLI on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      max-parallel: 2
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-    name: Bash on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
         with:
-          python-version: "3.x"
-      - name: Install dependencies
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install CLI
         run: |
-          python -m pip install -U pip
+          python -m pip install --upgrade pip
           python -m pip install -e .
-      - name: Install weasyprint on macos-latest
-        if: runner.os == 'macOS'
-        run: |
-          brew install weasyprint
-      - name: Run tests append
+      - name: Run append tests
         run: sh tests/append/tests.sh
-      - name: Run tests version
+      - name: Run version test
         run: sh tests/test_version.sh

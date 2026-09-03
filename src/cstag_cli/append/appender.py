@@ -1,6 +1,7 @@
 from __future__ import annotations
-import pysam
+
 import cstag
+import pysam
 
 
 def append(sam: pysam.AlignmentFile, long: bool = False) -> None:
@@ -22,13 +23,22 @@ def append(sam: pysam.AlignmentFile, long: bool = False) -> None:
 
         # Check for the presence of the MD tag
         if not read.has_tag("MD"):
-            raise ValueError(f"MD tag is not found in the input. \nThis error occurred at {read.query_name}.")
+            raise ValueError(
+                f"MD tag is not found in the input. \nThis error occurred at {read.query_name}."
+            )
 
         # Append cs tag and output alignments
         try:
-            cs = cstag.call(cigar=read.cigarstring, md=read.get_tag("MD"), seq=read.seq, long=long)
-        except Exception as e:
-            raise type(e)(f"{e}. \nThis error occurred at {read.query_name}.")
+            cs = cstag.call(
+                cigar=read.cigarstring,
+                md=read.get_tag("MD"),
+                seq=read.query_sequence,
+                long=long,
+            )
+        except Exception as error:
+            raise type(error)(
+                f"{error}. \nThis error occurred at {read.query_name}."
+            ) from error
 
         # Set the cs tag for the read
         read.set_tag("cs", cs.replace("cs:Z:", ""), replace=True)

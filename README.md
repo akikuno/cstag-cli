@@ -19,7 +19,7 @@
 
 ### Prerequisites
 
-- Python 3.7 or later
+- Python 3.11 or later
 - Unix-like environment (Linux, macOS, WSL, etc.)
 
 ### Installation
@@ -27,18 +27,9 @@
 Using [Bioconda](https://anaconda.org/bioconda/cstag-cli) (Recommended):
 
 ```bash
-conda create -n env-cstag -c conda-forge -c bioconda python=3.10 cstag-cli -y
+conda create -n env-cstag -c conda-forge -c bioconda python=3.11 cstag-cli -y
 conda activate env-cstag
 ```
-
-> [!NOTE]
-> To Apple Silicon (ARM64) users:  
-> [Since the Bioconda channel does not yet support Apple Silicon](https://github.com/bioconda/bioconda-recipes/issues/37068#issuecomment-1257790919), please use the following command to install `cstag-cli` through Rosetta.
-> ```bash
-> CONDA_SUBDIR=osx-64 conda create -n env-cstag -c conda-forge -c bioconda python=3.10 cstag-cli -y
-> conda activate env-cstag
-> conda config --env --set subdir osx-64
-> ```
 
 Using [PyPI](https://pypi.org/project/cstag-cli/):
 
@@ -48,6 +39,19 @@ pip install cstag-cli
 
 > [!CAUTION]
 > If you encounter any issues during the installation, please refer to the [Troubleshooting Guide](https://github.com/akikuno/cstag-cli/blob/main/docs/troubleshooting.md)
+
+### Development
+
+```bash
+python -m pip install -e . --group dev
+ruff format --check .
+ruff check .
+mypy
+python -m pytest tests -W error
+sh tests/append/tests.sh
+sh tests/test_version.sh
+python -m build
+```
 
 ## 💡Usage
 
@@ -98,4 +102,3 @@ By participating in this project you agree to abide by its terms.
 ## 📄 Citation
 
 - Kuno, A., (2024). cstag and cstag-cli: tools for manipulating and visualizing cs tags. *Journal of Open Source Software*, 9(93), 6066, https://doi.org/10.21105/joss.06066
-

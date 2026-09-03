@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import sys
+from typing import BinaryIO, TextIO
+
 import pysam
 
 
@@ -10,7 +12,7 @@ def _is_binary_data(data: bytes) -> bool:
     return bool(data.translate(None, text_characters))
 
 
-def _determine_format(input_stream) -> str:
+def _determine_format(input_stream: BinaryIO) -> str:
     first_bytes = input_stream.read(100)
 
     # Check if the input stream is empty
@@ -20,13 +22,11 @@ def _determine_format(input_stream) -> str:
     # Seek back to the original position after reading bytes from the buffer
     input_stream.seek(0)
 
-    if _is_binary_data(first_bytes):
-        return "rb"
-    else:
-        return "r"
+    return "rb" if _is_binary_data(first_bytes) else "r"
 
 
-def read_sam(data: str | sys.stdin) -> pysam.AlignmentFile:
+def read_sam(data: str | TextIO) -> pysam.AlignmentFile:
+    input_stream: str | TextIO
     if isinstance(data, str):
         with open(data, "rb") as file_stream:
             mode = _determine_format(file_stream)

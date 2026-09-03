@@ -1,22 +1,27 @@
 #!/bin/bash
 
+set -eu
+
+test_tmp_dir=$(mktemp -d)
+trap 'rm -rf "$test_tmp_dir"' EXIT
+
 #######################################
-# From standart input
+# From standard input
 #######################################
 
 # Short format
 cat tests/append/data/example.sam |
-    cstag append >/tmp/example_cs_short.sam
+    cstag append >"$test_tmp_dir/example_cs_short.sam"
 
 # Long format
 cat tests/append/data/example.sam |
-    cstag append -l >/tmp/example_cs_long.sam
+    cstag append -l >"$test_tmp_dir/example_cs_long.sam"
 
-if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
+if ! diff "$test_tmp_dir/example_cs_short.sam" tests/append/data/example_cs_short.sam; then
     exit 1
 fi
 
-if ! diff /tmp/example_cs_long.sam tests/append/data/example_cs_long.sam; then
+if ! diff "$test_tmp_dir/example_cs_long.sam" tests/append/data/example_cs_long.sam; then
     exit 1
 fi
 
@@ -25,16 +30,16 @@ fi
 #######################################
 
 # Short format
-cstag append tests/append/data/example.sam >/tmp/example_cs_short.sam
+cstag append tests/append/data/example.sam >"$test_tmp_dir/example_cs_short.sam"
 
 # Long format
-cstag append tests/append/data/example.sam -l >/tmp/example_cs_long.sam
+cstag append tests/append/data/example.sam -l >"$test_tmp_dir/example_cs_long.sam"
 
-if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
+if ! diff "$test_tmp_dir/example_cs_short.sam" tests/append/data/example_cs_short.sam; then
     exit 1
 fi
 
-if ! diff /tmp/example_cs_long.sam tests/append/data/example_cs_long.sam; then
+if ! diff "$test_tmp_dir/example_cs_long.sam" tests/append/data/example_cs_long.sam; then
     exit 1
 fi
 
@@ -44,17 +49,17 @@ fi
 
 # Short format
 cstag append tests/append/data/example.bam |
-    grep -v "@HD" >/tmp/example_cs_short.sam
+    grep -v "@HD" >"$test_tmp_dir/example_cs_short.sam"
 
 # Long format
 cstag append tests/append/data/example.bam -l |
-    grep -v "@HD" >/tmp/example_cs_long.sam
+    grep -v "@HD" >"$test_tmp_dir/example_cs_long.sam"
 
-if ! diff /tmp/example_cs_short.sam tests/append/data/example_cs_short.sam; then
+if ! diff "$test_tmp_dir/example_cs_short.sam" tests/append/data/example_cs_short.sam; then
     exit 1
 fi
 
-if ! diff /tmp/example_cs_long.sam tests/append/data/example_cs_long.sam; then
+if ! diff "$test_tmp_dir/example_cs_long.sam" tests/append/data/example_cs_long.sam; then
     exit 1
 fi
 
@@ -62,8 +67,8 @@ fi
 # No arguments
 #######################################
 
-cstag >/tmp/help.txt
+cstag >"$test_tmp_dir/help.txt"
 
-if ! diff /tmp/help.txt tests/append/data/help.txt; then
+if ! diff "$test_tmp_dir/help.txt" tests/append/data/help.txt; then
     exit 1
 fi
