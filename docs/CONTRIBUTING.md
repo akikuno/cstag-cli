@@ -51,6 +51,10 @@ Depending on how large the project is, you may want to outsource the questioning
 
 ## I Want To Contribute
 
+The development environment requires Python 3.11 or later. Install the local
+package and its development group, then run the checks documented in the
+[README](../README.md#development) before opening a pull request.
+
 > ### Legal Notice <!-- omit in toc -->
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 

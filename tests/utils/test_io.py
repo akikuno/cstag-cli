@@ -1,6 +1,6 @@
-from cstag_cli.utils.io import _determine_format, read_sam
-
 from io import BytesIO
+
+from cstag_cli.utils.io import _determine_format, read_sam
 
 
 def test_determine_format():

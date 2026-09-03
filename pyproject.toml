@@ -1,19 +1,24 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "cstag-cli"
-version = "1.0.0"
-description = "Command line interface of cstag to manipulate the minimap2's CS tag"
-authors = ["Akihiro Kuno <akuno@md.tsukuba.ac.jp>"]
-homepage = "https://github.com/akikuno/cstag-cli"
-repository = "https://github.com/akikuno/cstag-cli"
+version = "1.0.1"
+description = "Command line interface of cstag to manipulate minimap2's cs tags"
+authors = [
+    { name = "Akihiro Kuno", email = "akuno@md.tsukuba.ac.jp" },
+]
 readme = "README.md"
+requires-python = ">=3.11"
 license = "MIT"
-
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "License :: OSI Approved :: MIT License",
     "Operating System :: POSIX",
     "Operating System :: Unix",
@@ -21,11 +26,65 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
+dependencies = [
+    "cstag>=1.1.1,<2.0.0",
+    "pysam>=0.24.0,<0.25.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.7"
-pysam = ">=0.19.0"
-cstag = ">=0.6.2"
+[project.urls]
+Homepage = "https://github.com/akikuno/cstag-cli"
+Repository = "https://github.com/akikuno/cstag-cli"
 
-[tool.poetry.scripts]
+[project.scripts]
 cstag = "cstag_cli.main:main"
+
+[dependency-groups]
+dev = [
+    "build>=1.6,<2",
+    "mypy>=2.3.1,<3",
+    "pytest>=9.1.1,<10",
+    "ruff>=0.16.5,<0.17",
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--verbose",
+    "-ra",
+    "--color=yes",
+]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "C4",
+    "E4",
+    "E7",
+    "E9",
+    "F",
+    "I",
+    "PERF",
+    "PIE",
+    "PT",
+    "RUF",
+    "SIM",
+    "UP",
+]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+no_site_packages = true
+
+[[tool.mypy.overrides]]
+module = ["cstag", "cstag.*", "pysam"]
+ignore_missing_imports = true

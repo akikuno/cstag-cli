@@ -4,51 +4,45 @@
 
 ### Prerequisites
 
-Before installing `cstag-cli`, please ensure that your system meets the following requirements:
+- Python 3.11 or later
+- A Unix-like environment such as Linux, macOS, or WSL
+- An isolated Conda environment or Python virtual environment is recommended
 
-- Python >=3.7
-- Unix-like environment (Linux, macOS, WSL, etc.)
-- [conda](https://docs.conda.io/en/latest/) or [mamba](https://mamba.readthedocs.io/en/latest/) is highly recommended for managing dependencies
-- If using pip, access to administrative privileges or the ability to install packages globally
+### Conda or Mamba
 
-### Dependencies
+Bioconda provides packages for supported Linux and macOS architectures. Create
+an isolated environment so that `cstag-cli` and its `pysam` dependency do not
+conflict with system packages:
 
-`cstag-cli` depends on the `pysam` package, which in turn requires `htslib`. These dependencies are critical for the functionality of `cstag-cli` but can pose installation challenges:
-
-- `htslib` requires `zlib.h`, which may not be available on all systems by default.
-- As of the latest update, `htslib v1.18`, there is no support for Windows via Bioconda.
-
-### Recommended Installation Method
-
-#### Using Conda/Mamba
-
-We strongly recommend using Conda or Mamba for installation, as they efficiently manage the complex dependencies of `pysam` and `htslib`:
-
-1. Install Conda or Mamba if you haven't already. You can download Conda from [here](https://docs.conda.io/en/latest/miniconda.html).
-
-2. Create a new environment (optional but recommended):
 ```bash
-conda create -n cstag-env
+conda create -n cstag-env -c conda-forge -c bioconda python=3.11 cstag-cli
 conda activate cstag-env
 ```
 
-3. Install `cstag-cli`:
+The same command can be used with `mamba` in place of `conda`.
+
+### pip
+
+Current `pysam` releases provide wheels for common supported platforms. Upgrade
+pip inside a virtual environment before installing so that an available wheel
+can be selected:
+
 ```bash
-conda install -c bioconda cstag-cli
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install cstag-cli
 ```
 
-#### Using pip
+If pip cannot find a compatible wheel, it may attempt a source build that needs
+platform-specific compiler and htslib prerequisites. In that case, use the
+Conda/Bioconda installation above or consult the current
+[`pysam` installation documentation](https://pysam.readthedocs.io/en/latest/installation.html).
 
-If you prefer or are required to use pip, please ensure that `zlib.h` and other dependencies are properly installed on your system. This method might require administrative privileges:
+Windows users should use WSL because Bioconda does not provide native Windows
+packages.
 
-```bash
-pip install cstag-cli
-```
+## Reporting other problems
 
-> [!NOTE]
-> Pip installation might encounter issues due to the dependencies mentioned above, especially on systems without `zlib.h` or on Windows.
-
-
-## Report other troubles
-
-Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) for all reporting purposes.  
+Please use [GitHub Issues](https://github.com/akikuno/cstag-cli/issues) and
+include the cstag-cli, Python, operating-system, and input-format versions.
